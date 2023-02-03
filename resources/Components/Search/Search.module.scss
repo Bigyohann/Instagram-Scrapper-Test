@@ -1,0 +1,26 @@
+.input {
+    border-radius: 6px 6px 6px 6px;
+    height: 40px;
+    font-size: 25px;
+    max-width: 400px;
+    margin-right: 10px;
+    border: 1px #2d3748 solid;
+}
+
+.form {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    background-color: #2b3e66;
+    color: white;
+    height: 40px;
+    border: 1px #1a202c solid;
+    padding: 10px 40px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}

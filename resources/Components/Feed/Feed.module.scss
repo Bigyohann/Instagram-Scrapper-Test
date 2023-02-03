@@ -1,0 +1,37 @@
+.username {
+    font-size: 1.3rem;
+    font-weight: 600
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.infosWrapper {
+    display: flex;
+    margin-top: 40px;
+}
+
+.profilePicture {
+    border-radius: 50%;
+    max-width: 100px;
+}
+
+.descriptionWrapper {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    div {
+        margin-top: 10px;
+    }
+}
+
+.followWrapper {
+    margin-left: auto;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+}
