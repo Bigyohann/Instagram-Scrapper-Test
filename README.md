@@ -21,5 +21,8 @@ user information and posts from new Instagram Api.
 
 I try a way without login but your ip could get blocked if not logged after 10/20 try. 
 
+## Tests
+To run your test, you need to define `INSTAGRAM_ACCOUNT` and `INSTAGRAM_PASSWORD`, one test check if it can retrieve datas
+
 ## Troubleshooting
 You may have some problems while you get data for first time (instagram detect a new device, just confirm it on your phone)
