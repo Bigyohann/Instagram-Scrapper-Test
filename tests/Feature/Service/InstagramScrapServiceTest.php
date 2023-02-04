@@ -4,7 +4,7 @@ namespace Tests\Feature\Service;
 
 use App\Models\InstagramPost;
 use App\Models\InstagramProfile;
-use App\Service\InstagramScrapService;
+use App\Services\InstagramScrapService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use InstagramScraper\Exception\InstagramAuthException;
 use InstagramScraper\Exception\InstagramChallengeRecaptchaException;

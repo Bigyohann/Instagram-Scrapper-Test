@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service;
+namespace App\Services;
 
 use App\Exceptions\BannedFromInstagramApiException;
 use App\Exceptions\InstagramApiException;
@@ -14,7 +14,6 @@ use DateTimeImmutable;
 use DB;
 use Exception;
 use GuzzleHttp\Client;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use InstagramScraper\Exception\InstagramAuthException;
@@ -27,13 +26,14 @@ use InstagramScraper\Model\Account;
 use InstagramScraper\Model\Media;
 use Phpfastcache\Helper\Psr16Adapter;
 use Psr\SimpleCache\InvalidArgumentException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class InstagramScrapService
 {
 
     /**
      * @param string $username
-     * @return Model|InstagramProfile
+     * @return InstagramProfile
      * @throws InstagramAuthException
      * @throws InstagramChallengeRecaptchaException
      * @throws InstagramChallengeSubmitPhoneNumberException
@@ -41,7 +41,7 @@ class InstagramScrapService
      * @throws InstagramNotFoundException
      * @throws InvalidArgumentException
      */
-    public function retrieveInstagramPostFromUsername(string $username): InstagramProfile|Model
+    public function retrieveInstagramPostFromUsername(string $username): InstagramProfile
     {
         $profile = InstagramProfile::where('username', $username)->first();
 
@@ -112,14 +112,17 @@ class InstagramScrapService
             $postsUpdateQuery[] = $update;
         }
 
-        // Delete all pictures on server
+        // Delete all pictures related to post on server (
         /** @var InstagramPost $item */
         foreach ($profile->posts()->get() as $item) {
             Storage::delete($item->imageUrl);
         }
 
+        // Delete old post before update
         $profile->posts()->delete();
-        DB::table('instagram_posts')->upsert($postsUpdateQuery, 'instagramId');
+
+        // Bulk update
+       InstagramPost::upsert($postsUpdateQuery, 'instagramId');
     }
 
     /**

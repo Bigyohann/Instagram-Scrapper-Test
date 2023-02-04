@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\InstagramPost;
 use App\Models\InstagramProfile;
-use App\Service\InstagramScrapService;
+use App\Services\InstagramScrapService;
 use InstagramScraper\Exception\InstagramAuthException;
 use InstagramScraper\Exception\InstagramChallengeRecaptchaException;
 use InstagramScraper\Exception\InstagramChallengeSubmitPhoneNumberException;

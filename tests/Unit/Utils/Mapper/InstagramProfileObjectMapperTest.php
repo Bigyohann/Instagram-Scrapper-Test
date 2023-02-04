@@ -12,10 +12,10 @@ class InstagramProfileObjectMapperTest extends TestCase
 {
     public function testFunctionMapCorrectlyToObject(){
 
-        $acccountMock = InstagramTestUtils::mockAccount('usernameTest', 25);
+        $accountMock = InstagramTestUtils::mockAccount('usernameTest', 25);
         $profile = new InstagramProfile();
 
-        InstagramProfileObjectMapper::map($acccountMock, $profile);
+        InstagramProfileObjectMapper::map($accountMock, $profile);
 
         $this->assertEquals('usernameTest', $profile->username);
     }
