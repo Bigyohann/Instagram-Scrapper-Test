@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {IPosts} from "../Posts/Feed";
-import {IPost} from "../Posts/Post/Post";
 import styles from "./Search.module.scss"
+
 interface ISearchProps {
     triggerButton(data: IPosts): void;
 }
@@ -21,7 +21,13 @@ export const Search: React.FunctionComponent = (props: ISearchProps) => {
     }
     let fetchData = async () => {
         setLoading(true);
-        const response = await fetch('/api/post/' + username, {method: 'GET'})
+        const response = await fetch('/api/post/' + username, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        })
         const data: IPosts = await response.json();
         props.triggerButton(data);
         setLoading(false);
