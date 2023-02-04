@@ -7,6 +7,8 @@ Don't forget to put your instagram `INSTAGRAM_ACCOUNT` and `INSTAGRAM_PASSWORD` 
 
 Run `./vendor/bin/sail up` if you have docker and docker-compose installed on your device
 
+Migrate DB with `./vendor/bin/sail artisan migrate`
+
 Build assets with `./vendor/bin/sail npm install` then `./vendor/bin/sail npm run build`
 
 Go to `http://localhost`, default account loaded is youtube account, but you can select the one you want.
